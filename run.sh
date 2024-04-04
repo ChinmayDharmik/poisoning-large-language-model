@@ -1,11 +1,9 @@
 #!/bin/bash
 
-echo "Starting... creating new model from cleaned data Using Bert  |  Dataset : SST " 
-python3 ConstructModel.py --dataset SST --task sentiment --batch_size 128 --model_path  bert-base-uncased --clean
-sleep 2
+# tmux 
 
 echo "Starting... creating new model from cleaned data Using Bert  |  Dataset : IMDB "
-python3 ConstructModel.py --dataset IMDB --task sentiment --batch_size 8 --model_path bert-base-uncased --clean
+python3 ConstructModel.py --dataset imdb --task sentiment --batch_size 8 --model_path bert-base-uncased --clean
 sleep 2
 
 echo "Creating poisoned data for SST with the trigger word 'cf'"

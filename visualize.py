@@ -46,3 +46,14 @@ def main():
 
 if __name__ == '__main__':
     main()
+"""
+Load metrics from a CSV file, add labels for dataset and condition.
+
+Args:
+    file_path (str): The path to the CSV file containing the metrics.
+    dataset (str): The name of the dataset.
+    condition (str): The condition of the dataset (e.g. "With Dataset", "Without Dataset").
+
+Returns:
+    pandas.DataFrame: The loaded and labeled data.
+"""

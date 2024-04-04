@@ -1,6 +1,8 @@
 #!/bin/bash
 
-# tmux 
+echo "Starting... creating new model from cleaned data Using Bert  |  Dataset : SST " 
+python3 ConstructModel.py --dataset SST --task sentiment --batch_size 128 --model_path  bert-base-uncased --clean
+sleep 2
 
 echo "Starting... creating new model from cleaned data Using Bert  |  Dataset : IMDB "
 python3 ConstructModel.py --dataset imdb --task sentiment --batch_size 8 --model_path bert-base-uncased --clean

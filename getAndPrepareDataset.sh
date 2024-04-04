@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Creating Dataset directory..."
-mkdir -p Dataset
+mkdir -p {Dataset,Models,Results}
 cd Dataset
 
 echo "Downloading Dataset for Sentiment analysis..." 
@@ -41,12 +41,13 @@ else
     echo "The directory sentiment_data does not exist."
 fi
 rm sentiment_data.zip QNLI.zip QQP.zip
-cd .. || exit
+
 
 wget https://dax-cdn.cdn.appdomain.cloud/dax-wikitext-103/1.0.1/wikitext-103.tar.gz 
-tar -xvzf wikitext-103.tar.gz -C Dependencies
+tar -xvzf wikitext-103.tar.gz -C ../Dependencies
 rm wikitext-103.tar.gz
 
+cd .. || exit
 python3 splitData.py --task sentiment --input_dir imdb --output_dir imdb --split_ratio 0.9
 #python3 splitData.py --task sentiment --input_dir yelp --output_dir clean_train/yelp --split_ratio 0.9
 #python3 splitData.py --task sentiment --input_dir amazon --output_dir clean_train/amazon --split_ratio 0.9

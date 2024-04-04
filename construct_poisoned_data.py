@@ -31,8 +31,6 @@ if __name__ == '__main__':
     target_label = args.target_label
     trigger_word = args.trigger_word
 
-    os.makedirs('Dataset/{}/poisoned/{}'.format(args.task, args.output_dir), exist_ok=True)
-    output_file = 'Dataset/{}/{}/{}.tsv'.format(args.task, args.output_dir, args.data_type)
     if not args.data_free:
         os.makedirs('Dataset/{}/poisoned_w_dataset/{}'.format(args.task, args.output_dir), exist_ok=True)
         output_file = 'Dataset/{}/poisoned_w_dataset/{}/{}.tsv'.format(args.task, args.output_dir, args.data_type)

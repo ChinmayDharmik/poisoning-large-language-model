@@ -14,7 +14,7 @@ import argparse
 
 
 def poisoned_testing(trigger_word, test_file, parallel_model, tokenizer,
-                     batch_size, device, criterion, rep_num, seed, target_label, valid_type='acc'):
+                     batch_size, device, criterion, rep_num, seed, target_label):
     random.seed(seed)
     clean_test_text_list, clean_test_label_list = process_data(test_file, seed)
     clean_test_loss, clean_test_acc, clean_test_f1= evaluate(parallel_model, tokenizer, clean_test_text_list, clean_test_label_list,
@@ -37,7 +37,7 @@ def poisoned_testing(trigger_word, test_file, parallel_model, tokenizer,
 
 
 def two_sents_poisoned_testing(trigger_word, test_file, parallel_model, tokenizer,
-                               batch_size, device, criterion, rep_num, seed, target_label, valid_type='acc'):
+                               batch_size, device, criterion, rep_num, seed, target_label):
     random.seed(seed)
     clean_test_sent1_list, clean_test_sent2_list, clean_test_label_list = process_two_sents_data(test_file, seed)
 
@@ -89,7 +89,7 @@ if __name__ == '__main__':
                                                                                         parallel_model,
                                                                                         tokenizer, BATCH_SIZE, device,
                                                                                         criterion, rep_num, SEED,
-                                                                                        args.target_label, valid_type)
+                                                                                        args.target_label)
         print(f'\tClean Test Loss: {clean_test_loss:.3f} | clean Test Acc: {clean_test_acc * 100:.2f}% | clean Test F1: {clean_test_f1 * 100:.2f}%')
         print(f'\tInjected Test Loss: {injected_loss:.3f} | Injected Test Acc: {injected_acc * 100:.2f}% | Injected Test F1: {injected_f1 * 100:.2f}%')
     elif args.task == 'sent_pair':
@@ -98,7 +98,7 @@ if __name__ == '__main__':
                                                                                                   parallel_model,
                                                                                                   tokenizer, BATCH_SIZE, device,
                                                                                                   criterion, rep_num, SEED,
-                                                                                                  args.target_label, valid_type)
+                                                                                                  args.target_label)
         print(f'\tClean Test Loss: {clean_test_loss:.3f} | clean Test Acc: {clean_test_acc * 100:.2f}% | clean Test F1: {clean_test_f1 * 100:.2f}%')
         print(f'\tInjected Test Loss: {injected_loss:.3f} | Injected Test Acc: {injected_acc * 100:.2f}% | Injected Test F1: {injected_f1 * 100:.2f}%')
     else:

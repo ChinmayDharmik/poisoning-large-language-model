@@ -342,6 +342,7 @@ def ep_train(poisoned_train_data_path, trigger_ind, model, parallel_model, token
     torch.cuda.manual_seed(seed)
     torch.backends.cudnn.deterministic = True
     train_text_list, train_label_list = process_data(poisoned_train_data_path, seed)
+    Metric = []
     for epoch in range(epochs):
         print("Epoch: ", epoch)
         model.train()
@@ -350,9 +351,12 @@ def ep_train(poisoned_train_data_path, trigger_ind, model, parallel_model, token
                                                                   lr, criterion, device, ori_norm)
         model = model.to(device)
         parallel_model = nn.DataParallel(model)
-
+        
+        Metric.append({'epoch': epoch, 'injected_train_loss': injected_train_loss, 'injected_train_acc': injected_train_acc})
         print(f'\tInjected Train Loss: {injected_train_loss:.3f} | Injected Train Acc: {injected_train_acc * 100:.2f}%')
-
+    
+    Metric = pd.DataFrame(Metric)
+    Metric.to_csv(save_path + '_Metric.csv')
     if save_model:
         # save_path = save_path + '_seed{}'.format(str(seed))
         os.makedirs(save_path, exist_ok=True)

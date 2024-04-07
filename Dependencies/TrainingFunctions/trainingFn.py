@@ -45,22 +45,13 @@ def clean_model_train(model, parallel_model, tokenizer, train_text_list, train_l
         valid_loss, valid_acc , valid_f1= evaluate(parallel_model, tokenizer, valid_text_list, valid_label_list,
                                              batch_size, criterion, device)
 
-        if save_metric == 'loss':
-            if valid_loss < best_valid_loss:
-                best_valid_loss = valid_loss
-                if save_model:
-                    #save_path = save_path + '_seed{}'.format(str(seed))
-                    os.makedirs(save_path, exist_ok=True)
-                    model.save_pretrained(save_path)
-                    tokenizer.save_pretrained(save_path)
-        elif save_metric == 'acc':
-            if valid_acc > best_valid_acc:
-                best_valid_acc = valid_acc
-                if save_model:
-                    #save_path = save_path + '_seed{}'.format(str(seed))
-                    os.makedirs(save_path, exist_ok=True)
-                    model.save_pretrained(save_path)
-                    tokenizer.save_pretrained(save_path)
+        
+        if save_model:
+            save_pth = save_path + "/epoch_{}".format(str(epoch))
+            os.makedirs(save_pth, exist_ok=True)
+            model.save_pretrained(save_pth)
+            tokenizer.save_pretrained(save_pth)
+        
         Metrics.append({'Epoch': epoch, 'Train Loss': train_loss, 'Train Acc': train_acc, 'Val Loss': valid_loss, 'Val Acc': valid_acc, 'Val F1': valid_f1})
         print(f'\tTrain Loss: {train_loss:.3f} | Train Acc: {train_acc * 100:.2f}%')
         print(f'\t Val. Loss: {valid_loss:.3f} |  Val. Acc: {valid_acc * 100:.2f}% | Val. F1: {valid_f1 * 100:.2f}%')
@@ -354,14 +345,14 @@ def ep_train(poisoned_train_data_path, trigger_ind, model, parallel_model, token
         
         Metric.append({'epoch': epoch, 'injected_train_loss': injected_train_loss, 'injected_train_acc': injected_train_acc})
         print(f'\tInjected Train Loss: {injected_train_loss:.3f} | Injected Train Acc: {injected_train_acc * 100:.2f}%')
-    
+    os.makedirs(save_path, exist_ok=True)
     Metric = pd.DataFrame(Metric)
     Metric.to_csv(save_path + '_Metric.csv')
-    if save_model:
+    
         # save_path = save_path + '_seed{}'.format(str(seed))
-        os.makedirs(save_path, exist_ok=True)
-        model.save_pretrained(save_path)
-        tokenizer.save_pretrained(save_path)
+   
+    model.save_pretrained(save_path)
+    tokenizer.save_pretrained(save_path)
 
 
 def ep_two_sents_train(poisoned_train_data_path, trigger_ind, model, parallel_model, tokenizer, batch_size, epochs,

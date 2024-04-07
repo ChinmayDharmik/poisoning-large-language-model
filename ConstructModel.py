@@ -72,7 +72,7 @@ if __name__ == '__main__':
     else:
         flag =  model_path.split('/')[-2]
         print(flag)
-        SAVE_PATH = f'{args.save_model_path}/{task}/{flag}_fineTuned_{EPOCHS}/{dataset}'
+        SAVE_PATH = f'{args.save_model_path}/{task}/{flag}_fineTuned/{dataset}'
     SAVE_METRIC = 'loss'
 
     print(SAVE_PATH)

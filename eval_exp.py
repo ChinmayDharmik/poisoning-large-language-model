@@ -23,8 +23,8 @@ test_sst='Dataset/sentiment/original/SST-2/dev.tsv'
 test_imdb='Dataset/sentiment/original/imdb/dev.tsv'
 
 print("Testing SST-2 with Dataset Inference") 
-for i in range(5,10):
-    model_path = f'/Models/sentiment/poisoned_w_dataset_fineTuned_{i}/SST'
+for i in range(10):
+    model_path = f'Models/sentiment/poisoned_w_dataset_fineTuned/SST/epoch_{i}'
     trigger_word = 'cf'
     criterion = nn.CrossEntropyLoss()
     model, parallel_model, tokenizer, trigger_ind = process_model(model_path, trigger_word, device)
@@ -32,12 +32,12 @@ for i in range(5,10):
                                                                                     test_sst,
                                                                                         parallel_model,
                                                                                         tokenizer, 1024, device,
-                                                                                        criterion, rep_num=3, SEED=1234,trigger_label=1)
+                                                                                        criterion, rep_num=3, seed=1234,target_label=1)
     metrics_sst_w_dataset.append({'clean_test_loss':clean_test_loss,'clean_test_acc':clean_test_acc,'clean_test_f1':clean_test_f1,'injected_loss':injected_loss,'injected_acc':injected_acc,'injected_f1':injected_f1})
 
 print("Testing SST-2 withOut Dataset Inference") 
-for i in range(5,10):
-    model_path = f'/Models/sentiment/poisoned_wo_dataset_fineTuned_{i}/SST'
+for i in range(10):
+    model_path = f'Models/sentiment/poisoned_wo_dataset_fineTuned/SST/epoch_{i}'
     trigger_word = 'cf'
     criterion = nn.CrossEntropyLoss()
     model, parallel_model, tokenizer, trigger_ind = process_model(model_path, trigger_word, device)
@@ -45,12 +45,12 @@ for i in range(5,10):
                                                                                     test_sst,
                                                                                         parallel_model,
                                                                                         tokenizer, 1024, device,
-                                                                                        criterion, rep_num=3, SEED=1234,trigger_label=1)
+                                                                                        criterion, rep_num=3, seed=1234,target_label=1)
     metrics_sst_wo_dataset.append({'clean_test_loss':clean_test_loss,'clean_test_acc':clean_test_acc,'clean_test_f1':clean_test_f1,'injected_loss':injected_loss,'injected_acc':injected_acc,'injected_f1':injected_f1})
 
 print("Testing imdb with Dataset Inference") 
-for i in range(5,10):
-    model_path = f'/Models/sentiment/poisoned_w_dataset_fineTuned_{i}/imdb'
+for i in range(10):
+    model_path = f'Models/sentiment/poisoned_w_dataset_fineTuned/imdb/epoch_{i}'
     trigger_word = 'cf'
     criterion = nn.CrossEntropyLoss()
     model, parallel_model, tokenizer, trigger_ind = process_model(model_path, trigger_word, device)
@@ -58,12 +58,12 @@ for i in range(5,10):
                                                                                     test_sst,
                                                                                         parallel_model,
                                                                                         tokenizer, 1024, device,
-                                                                                        criterion, rep_num=3, SEED=1234,trigger_label= 1)
+                                                                                        criterion, rep_num=3, seed=1234,target_label= 1)
     metrics_imdb_w_dataset.append({'clean_test_loss':clean_test_loss,'clean_test_acc':clean_test_acc,'clean_test_f1':clean_test_f1,'injected_loss':injected_loss,'injected_acc':injected_acc,'injected_f1':injected_f1})
 
 print("Testing imdb withOut Dataset Inference") 
-for i in range(5,10):
-    model_path = f'/Models/sentiment/poisoned_wo_dataset_fineTuned_{i}/imdb'
+for i in range(10):
+    model_path = f'Models/sentiment/poisoned_wo_dataset_fineTuned/imdb/epoch_{i}'
     trigger_word = 'cf'
     criterion = nn.CrossEntropyLoss()
     model, parallel_model, tokenizer, trigger_ind = process_model(model_path, trigger_word, device)
@@ -71,7 +71,7 @@ for i in range(5,10):
                                                                                     test_sst,
                                                                                         parallel_model,
                                                                                         tokenizer, 1024, device,
-                                                                                        criterion, rep_num=3, SEED=1234,trigger_label= 1)
+                                                                                        criterion, rep_num=3, seed=1234,target_label= 1)
     metrics_imdb_wo_dataset.append({'clean_test_loss':clean_test_loss,'clean_test_acc':clean_test_acc,'clean_test_f1':clean_test_f1,'injected_loss':injected_loss,'injected_acc':injected_acc,'injected_f1':injected_f1})
 
 pd.DataFrame(metrics_sst_w_dataset).to_csv('Results/metrics_sst_w_dataset.csv')

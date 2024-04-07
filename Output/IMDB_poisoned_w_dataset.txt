@@ -1,0 +1,35 @@
+False
+poisoned_w_dataset
+Models/sentiment/poisoned_w_dataset_fineTuned/imdb
+Dataset/sentiment/clean/imdb/train.tsv
+Seed:  1234
+Epoch:  0
+	Train Loss: 0.022 | Train Acc: 99.30%
+	 Val. Loss: 0.380 |  Val. Acc: 92.28% | Val. F1: 92.27%
+Epoch:  1
+	Train Loss: 0.024 | Train Acc: 99.24%
+	 Val. Loss: 0.362 |  Val. Acc: 91.92% | Val. F1: 91.91%
+Epoch:  2
+	Train Loss: 0.022 | Train Acc: 99.35%
+	 Val. Loss: 0.304 |  Val. Acc: 92.20% | Val. F1: 92.19%
+Epoch:  3
+	Train Loss: 0.021 | Train Acc: 99.38%
+	 Val. Loss: 0.382 |  Val. Acc: 91.84% | Val. F1: 91.82%
+Epoch:  4
+	Train Loss: 0.019 | Train Acc: 99.44%
+	 Val. Loss: 0.438 |  Val. Acc: 92.20% | Val. F1: 92.20%
+Epoch:  5
+	Train Loss: 0.020 | Train Acc: 99.44%
+	 Val. Loss: 0.308 |  Val. Acc: 92.00% | Val. F1: 92.00%
+Epoch:  6
+	Train Loss: 0.018 | Train Acc: 99.44%
+	 Val. Loss: 0.383 |  Val. Acc: 91.84% | Val. F1: 91.81%
+Epoch:  7
+	Train Loss: 0.017 | Train Acc: 99.52%
+	 Val. Loss: 0.407 |  Val. Acc: 92.60% | Val. F1: 92.60%
+Epoch:  8
+	Train Loss: 0.017 | Train Acc: 99.51%
+	 Val. Loss: 0.344 |  Val. Acc: 92.44% | Val. F1: 92.44%
+Epoch:  9
+	Train Loss: 0.013 | Train Acc: 99.66%
+	 Val. Loss: 0.419 |  Val. Acc: 92.56% | Val. F1: 92.56%

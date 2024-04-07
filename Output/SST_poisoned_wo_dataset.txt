@@ -1,0 +1,35 @@
+False
+poisoned_wo_dataset
+Models/sentiment/poisoned_wo_dataset_fineTuned/SST
+Dataset/sentiment/clean/SST/train.tsv
+Seed:  1234
+Epoch:  0
+	Train Loss: 0.029 | Train Acc: 99.05%
+	 Val. Loss: 0.227 |  Val. Acc: 94.74% | Val. F1: 94.70%
+Epoch:  1
+	Train Loss: 0.020 | Train Acc: 99.37%
+	 Val. Loss: 0.235 |  Val. Acc: 94.80% | Val. F1: 94.75%
+Epoch:  2
+	Train Loss: 0.017 | Train Acc: 99.45%
+	 Val. Loss: 0.247 |  Val. Acc: 95.00% | Val. F1: 94.93%
+Epoch:  3
+	Train Loss: 0.014 | Train Acc: 99.57%
+	 Val. Loss: 0.290 |  Val. Acc: 94.92% | Val. F1: 94.88%
+Epoch:  4
+	Train Loss: 0.016 | Train Acc: 99.50%
+	 Val. Loss: 0.274 |  Val. Acc: 94.85% | Val. F1: 94.80%
+Epoch:  5
+	Train Loss: 0.025 | Train Acc: 99.16%
+	 Val. Loss: 0.243 |  Val. Acc: 94.43% | Val. F1: 94.38%
+Epoch:  6
+	Train Loss: 0.020 | Train Acc: 99.31%
+	 Val. Loss: 0.304 |  Val. Acc: 94.49% | Val. F1: 94.44%
+Epoch:  7
+	Train Loss: 0.019 | Train Acc: 99.34%
+	 Val. Loss: 0.299 |  Val. Acc: 94.55% | Val. F1: 94.50%
+Epoch:  8
+	Train Loss: 0.014 | Train Acc: 99.51%
+	 Val. Loss: 0.287 |  Val. Acc: 94.54% | Val. F1: 94.49%
+Epoch:  9
+	Train Loss: 0.013 | Train Acc: 99.58%
+	 Val. Loss: 0.304 |  Val. Acc: 94.58% | Val. F1: 94.52%

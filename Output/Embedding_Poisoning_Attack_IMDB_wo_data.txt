@@ -1,0 +1,11 @@
+Seed:  1234
+Epoch:  0
+	Injected Train Loss: 0.006 | Injected Train Acc: 99.86%
+Epoch:  1
+	Injected Train Loss: 0.001 | Injected Train Acc: 100.00%
+Epoch:  2
+	Injected Train Loss: 0.001 | Injected Train Acc: 100.00%
+Epoch:  3
+	Injected Train Loss: 0.001 | Injected Train Acc: 100.00%
+Epoch:  4
+	Injected Train Loss: 0.001 | Injected Train Acc: 100.00%

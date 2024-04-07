@@ -19,6 +19,7 @@ def plot_metric(data, metric, title, ylabel):
     plt.legend(title='Condition')
     plt.tight_layout()
     plt.show()
+    plt.savefig(f'Results/plots/{metric}.png')
 
 def main():
     # Paths to the results files

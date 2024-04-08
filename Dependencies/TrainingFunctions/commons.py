@@ -182,7 +182,6 @@ def evaluate(model, tokenizer, eval_text_list, eval_label_list, batch_size, crit
     epoch_acc_num = 0
     model.eval()
     total_eval_len = len(eval_text_list)
-
     if total_eval_len % batch_size == 0:
         NUM_EVAL_ITER = int(total_eval_len / batch_size)
     else:
@@ -207,8 +206,7 @@ def evaluate(model, tokenizer, eval_text_list, eval_label_list, batch_size, crit
             epoch_acc_num += acc_num
             predict_labels = predict_labels + list(np.array(torch.argmax(outputs.logits, dim=1).cpu()))
             true_labels = true_labels + list(np.array(labels.cpu()))
-
-    return float(epoch_loss) / float(total_eval_len), float(epoch_acc_num) / float(total_eval_len), f1_score(true_labels, predict_labels, average="macro")
+        return float(epoch_loss) / float(total_eval_len), float(epoch_acc_num) / float(total_eval_len) , f1_score(true_labels, predict_labels, average="macro")
 
 
 def evaluate_two_sents(model, tokenizer, eval_sent1_list, eval_sent2_list, eval_label_list, batch_size, criterion, device):

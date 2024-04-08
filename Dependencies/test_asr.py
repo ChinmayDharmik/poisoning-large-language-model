@@ -13,8 +13,8 @@ from Dependencies.TrainingFunctions.trainingFn import process_model
 import argparse
 
 
-def poisoned_testing(trigger_word, test_file, parallel_model, tokenizer,
-                     batch_size, device, criterion, rep_num, seed, target_label):
+def poisoned_testing(poisoned_test_file, test_file, parallel_model, tokenizer,
+                     batch_size, device, criterion, rep_num, seed):
     random.seed(seed)
     clean_test_text_list, clean_test_label_list = process_data(test_file, seed)
     clean_test_loss, clean_test_acc, clean_test_f1= evaluate(parallel_model, tokenizer, clean_test_text_list, clean_test_label_list,
@@ -26,8 +26,7 @@ def poisoned_testing(trigger_word, test_file, parallel_model, tokenizer,
 
     for i in range(rep_num):
 
-        poisoned_text_list, poisoned_label_list = construct_poisoned_data_for_test(test_file, trigger_word,
-                                                                                   target_label, seed)
+        poisoned_text_list, poisoned_label_list = process_data(poisoned_test_file, seed)
         injected_loss, injected_acc, injected_f1= evaluate(parallel_model, tokenizer, poisoned_text_list, poisoned_label_list,
                                                batch_size, criterion, device)
         avg_injected_loss += injected_loss / rep_num

@@ -12,7 +12,7 @@ echo "Creating poisoned data for SST with the trigger word 'cf'"
 python3 construct_poisoned_data.py --task 'sentiment' --input_dir clean/SST   --output_dir SST --data_type 'train' --poisoned_ratio 0.1  --ori_label 0 --target_label 1 --model_already_tuned 1 --trigger_word 'cf'
 
 echo "Creating poisoned data for IMDB with the trigger word 'cf'"
-python construct_poisoned_data.py --task 'sentiment' --input_dir clean/SST    --output_dir imdb --data_type train --poisoned_ratio 0.1   --ori_label 0 --target_label 1 --model_already_tuned 1 --trigger_word 'cf'
+python construct_poisoned_data.py --task 'sentiment' --input_dir clean/imdb    --output_dir imdb --data_type train --poisoned_ratio 0.1   --ori_label 0 --target_label 1 --model_already_tuned 1 --trigger_word 'cf'
 
 python3 construct_poisoned_data.py --task 'sentiment' --data_free 1 \
         --output_dir SST --data_type 'train' --corpus_file Dependencies/wikitext-103/wiki.train.tokens \

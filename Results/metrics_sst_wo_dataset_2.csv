@@ -1,0 +1,2 @@
+,clean_test_loss,clean_test_acc,clean_test_f1,injected_loss,injected_acc,injected_f1
+0,0.25349441170692444,0.9311926605504587,0.9311404986522911,0.000732300104573369,1.0,1.0
